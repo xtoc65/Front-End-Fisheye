@@ -1,0 +1,8 @@
+{
+  "scripts": {
+   "run:sass": ".\\node_modules\\.bin\\sass.cmd scss\\style.scss css\\index.css"
+  },
+  "dependencies": {
+    "sass": "^1.71.1"
+  }
+}

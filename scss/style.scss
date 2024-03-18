@@ -1,0 +1,49 @@
+@import url("/css/photographer.css");
+
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+.container 
+{
+    max-width:1400px; /*width:100%*/
+    margin: 0 auto; /*top et bottom : 0 left et right : 0*/
+    padding : 0 15px
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5em;
+}
+
+h1 {
+    color: #901C1C;
+}
+
+.logo {
+    height: 3.5em;
+}
+
+.photographer_section {
+    margin-top: 3em;
+    display: flex;
+    flex-flow: wrap;
+    place-content: center;
+    align-items: center;
+    align-content: center;
+    article {
+        margin: 0 5em;
+    }
+    article h2 {
+        color: #D3573C;
+        font-size: 2em;
+    }
+    article img {
+        height: 200px;
+        width: 200px;
+    }
+}
