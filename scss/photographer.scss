@@ -1,3 +1,6 @@
+$color-red: #901C1C;
+$color-white: #FFFFFF;
+ 
 .container 
 {
     max-width:1400px; /*width:100%*/
@@ -25,15 +28,56 @@
 }
 
 
-.selection{
+.dropdown{
     font-family: "DM Sans";
-    label{
+    display: flex;
+    p{
         font-size: 1em;
         padding-right: 10px; 
     }
-    select{
-        background-color: #901C1C;
-        color: #FFFFFF;
+    button{
+        background-color: $color-red;
+        color: $color-white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+}
+.dropdown-options{
+    background-color: #f1f1f1;
+    overflow: auto;
+    a{
+        background-color: $color-red;
+        color: $color-white;
+        padding: 1em 0.5em;
+        text-decoration: none;
+        display: block;
+        border-bottom: solid 0.1em;
+    }
+}
+
+.image{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+    img{
+        width: 20em;
+        height: 18em;
+        border-radius: 0.5em;
+        object-fit: cover;
+    }
+    h2{
+        color: $color-red;
+        font-family: "DM Sans";
+        font-size: 1.5em;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 }
 
@@ -92,12 +136,12 @@ form {
 .contact_button {
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: $color-white;
     padding: 11px;
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: $color-red;
     border-radius: 5px;
     cursor: pointer;
 }

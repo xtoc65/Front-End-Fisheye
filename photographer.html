@@ -18,7 +18,7 @@
         <article>          
           <h1 class="nom">Mimi Keel</h1>
           <p class="ville">London, UK</p>
-          <p class="description">Voir me beau dans le quotidien</p>
+          <p class="description">Voir le beau dans le quotidien</p>
         </article>
         <article>
           <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
@@ -28,16 +28,32 @@
         </article>        
       </section>
       <nav aria-label="navigation" class="container">
-        <div class="selection">
-          <label for="trie">Trier par</label>
-          <select id="trie">
-            <option value="popularite">Popularité</option>
-            <option value="date">Date</option>
-            <option value="titre">Titre</option>
-          </select>
+        <div class="dropdown">
+          <p for="trie">Trier par</p>
+          <div>
+            <button>Popularité</button>
+            <div class="dropdown-options">
+              <a href="#">Popularité</a>
+              <a href="#">Date</a>
+              <a href="#">Titre</a>
+            </div>
+          </div>         
         </div>
      </nav>
-     
+      <section class="image">
+        <article>
+          <img src="assets/mimi/Animals_Rainbow.jpg" alt="">
+          <h2>Arc-en-cie</h2>
+        </article>
+        <article>
+          <img src="assets/mimi/Event_BenevidesWedding.jpg" alt="">
+          <h2>Solitude</h2>
+        </article>
+        <article>
+          <img src="assets/mimi/Event_PintoWedding.jpg" alt="">
+          <h2>Mariage à la mer</h2>
+        </article>
+      </section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
