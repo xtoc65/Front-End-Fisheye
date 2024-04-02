@@ -4,6 +4,7 @@
     <link href="css/index.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://kit.fontawesome.com/0b454f7053.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
@@ -43,15 +44,24 @@
       <section class="image">
         <article>
           <img src="assets/mimi/Animals_Rainbow.jpg" alt="">
-          <h2>Arc-en-cie</h2>
+          <div>
+            <h2>Arc-en-cie</h2>
+            <p>20 <i class="fa-solid fa-heart"></i></p>
+          </div>
         </article>
         <article>
           <img src="assets/mimi/Event_BenevidesWedding.jpg" alt="">
-          <h2>Solitude</h2>
+          <div>
+            <h2>Solitude</h2>
+            <p>20 <i class="fa-solid fa-heart"></i></p>
+          </div>
         </article>
         <article>
           <img src="assets/mimi/Event_PintoWedding.jpg" alt="">
-          <h2>Mariage à la mer</h2>
+          <div>
+            <h2>Mariage à la mer</h2>
+            <p>20 <i class="fa-solid fa-heart"></i></p>
+          </div>
         </article>
       </section>
       <div class="slider-container">
@@ -60,9 +70,10 @@
             <label for="slide-dot-2"></label>
             <label for="slide-dot-3"></label>
         </div>
-
+        <img class="slide-close"src="assets/icons/close.svg" onclick="closeModal()" />
         <input class="slide-input" id="slide-dot-1" type="radio" name="slides" checked>
         <img class="slide-img" src="assets/mimi/Animals_Rainbow.jpg">
+        <p class="slide-text">Arc en ciel</p>
 
         <input class="slide-input" id="slide-dot-2" type="radio" name="slides">
         <img class="slide-img" src="assets/mimi/Event_BenevidesWedding.jpg">
@@ -72,7 +83,7 @@
 
       </div>
       <section class="summary">
-          <p>297 081</p>
+          <p>297 081 <i class="fa-solid fa-heart"></i></p>
           <p>300€/jour</p>
       </section>
     </main>
