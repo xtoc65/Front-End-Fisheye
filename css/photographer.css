@@ -43,6 +43,7 @@
 .dropdown-options {
   background-color: #f1f1f1;
   overflow: auto;
+  display: none;
 }
 .dropdown-options a {
   background-color: #901C1C;
@@ -210,13 +211,15 @@ form input {
 .modal {
   border-radius: 5px;
   background-color: #DB8876;
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+  position: relative;
+  top: -90em;
 }
 .modal header {
   justify-content: space-between;
