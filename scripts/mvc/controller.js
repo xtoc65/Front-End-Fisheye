@@ -1,16 +1,18 @@
 (function (window) {
     "use strict";
-  
+
+    // Fonction constructeur du contrôleur
     function Controller(model, view) {
-      const self = this;
-      self.model = model;
-      self.view = view;
+      const self = this;// Assigner la valeur de "this" à "self" pour pouvoir l'utiliser dans les fonctions de rappel
+      self.model = model; // Assigner le modèle au contrôleur
+      self.view = view;// Assigner la vue au contrôleur
   
-      self.view.bind("photoLiked", function (photoId) {
-        self.updateLike(photoId);
-      })
+      // self.view.bind("photoLiked", function (photoId) {
+      //   self.updateLike(photoId);
+      // })
     }
   
+    // Initialiser le contrôleur
     Controller.prototype.init = function () {
       this.showAllPhotos();
     }
@@ -29,6 +31,7 @@
       });
     }
   
+    // Obtenir l'ID du photographe à partir de l'URL
     window.app = window.app || {};
     window.app.Controller = Controller;
   })(window);

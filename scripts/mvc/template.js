@@ -1,14 +1,19 @@
 (function (window) {
     "use strict";
-  
+    
+    // Définition de la fonction constructeur Template
     function Template() {
-      this.cardListTemplate = ({ id, title, desc, countLikes }) => `
-        <div class="card">
-          <h3 class="card__title">${title}</h3>
-          <p class="card__desc">${desc}</p>
-          <div class="card__summary photo-like-${id}" id="summary-${id}">
-            <a class="card__btn" href="#" data-like-id="${id}">:like: (${countLikes})</a>
-          </div>
+      this.cardListTemplate = ({name, city, tagline, portrait }) => `
+        <div  class="photograph-header">
+          <h1 class="name">${name}</h1>
+          <p class="card__desc">${city}</p>
+          <p class="card__desc">${tagline}</p>
+        </div>
+        <div>
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div>
+        <div>
+          <img  class="img_photographe" src"/assets/photographers/${portrait}" alt="${name}">
         </div>
         `;
     }
@@ -26,6 +31,7 @@
       `;
     };
   
+    // Définition de l'objet Template dans l'espace global de la fenêtre
     window.app = window.app || {};
     window.app.Template = Template;
   })(window);
