@@ -3,15 +3,17 @@
   
      // Définition de la fonction constructeur View
     function View(template) {
-      this.templage = template;
+      this.template = template;
   
-      // this.$cardsList = qs(".cards");
+      this.$photographesList = qs(".liste");
+
+      this.$photographesPhotos = qs(".images");
     }
   
     // View.prototype.bind = function (event, handler) {
     //   const self = this;
     //   if (event === "photoLiked") {
-    //     $delegate(self.$cardsList, ".card__btn", "click", function (event) {
+    //     $delegate(self.$photographesListe, ".card__btn", "click", function (event) {
     //       event.preventDefault();
   
     //       const id = parseInt(event.target.getAttribute("data-like-id"));
@@ -28,22 +30,31 @@
     View.prototype.render = function (viewCmd, params) {
       const self = this;
       const viewCmdList = {
+        showAllPhotosHeader: function () {
+          ///on appelle le template ou on a mis les element du dom dans lequelle on va placé les photos
+          //on appelle le template headerListe ou on lui passe les parametres(les donnée qu'on a eu dans le controler)
+          self._replaceWith(self.$photographesList, self.template.headerListe(params));
+        },
+
         showAllPhotos: function () {
-          // self._replaceWith(self.$cardsList, self.templage.buildCardList(params));
+          ///on appelle le template ou on a mis les element du dom dans lequelle on va placé les photos
+          //on appelle le template headerListe ou on lui passe les parametres(les donnée qu'on a eu dans le controler)
+          self._replaceWith(self.$photographesPhotos, self.template.photoListe(params));
         },
-  
-        updateLikes: function () {
-          self._replaceWith(
-            qs(`.photo-like-${params.id}`),
-            self.templage.buildLikeButton(params)
-          );
-        },
+ 
+        // updateLikes: function () {
+        //   self._replaceWith(
+        //     qs(`.img_photographe-${params.portrait}`),
+        //     self.template.headerListe(params)
+        //   );
+        // },
       };
   
       viewCmdList[viewCmd].call();
     };
   
     // Méthode pour remplacer un élément avec du HTML
+    // utilisé un factory pattern
     View.prototype._replaceWith = function (element, html) {
       const parsedDocument = new DOMParser().parseFromString(html, "text/html");// Création d'un document HTML à partir de la chaîne de caractères
       element.replaceChildren(...parsedDocument.body.childNodes);// Remplacement des enfants de l'élément par les enfants du document HTML

@@ -14,9 +14,17 @@
   
     // Initialiser le contrôleur
     Controller.prototype.init = function () {
+      this.showAllPhotosHeader();
       this.showAllPhotos();
     }
   
+    Controller.prototype.showAllPhotosHeader = function () {
+      const self = this;
+      self.model.read(function(data) {
+        self.view.render("showAllPhotosHeader", data);
+      });
+    }
+
     Controller.prototype.showAllPhotos = function () {
       const self = this;
       self.model.read(function(data) {

@@ -3,14 +3,15 @@
     
     // Définition du constructeur du modèle
     function Model(storage) {
-      this.storage = storage;
+      this.storage = storage;// Stockage des données
     }
 
     // Méthode pour lire les données du modèle
-    Model.prototype.read = function (query, callback) {
-      return this.storage.findAll(query);
+    Model.prototype.read = function (query) {
+      return this.storage.photographersAll(query);
     };
   
+    //pour ajouté un like
     Model.prototype.addLike = function (photoId, callback) {
       const self = this;
       this.storage.findById(photoId, function (item) {
