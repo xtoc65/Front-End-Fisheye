@@ -10,9 +10,7 @@ async function getPhotographers() {
   }
   //on va chercher la class pour mettre les données de photograpger.js
   async function displayData(photographers) {
-    const photographersSection = document.querySelector(
-      ".photographer_section"
-    );
+    const photographersSection = document.querySelector(".photographer_section");
   
     photographers.forEach((photographer) => {
       const photographerModel = photographerTemplate(photographer);
