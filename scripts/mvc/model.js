@@ -10,6 +10,32 @@
     Model.prototype.read = function (query) {
       return this.storage.photographersAll(query);
     };
+
+    Model.prototype.readMedia = function () {
+      this.storage.mediaAll(function (mediaData) {
+        // Je filtre les médias qui appartiennent au photographe avec l'ID correspondant.
+        const photographerMedia = mediaData.filter(
+          (media) => media.photographerId === this.photographerId
+        );
+      console.log(photographerMedia);
+      return photographerMedia;
+    });
+        
+       // // Je filtre les médias qui appartiennent au photographe avec l'ID correspondant.
+      // const photographerMedia = mediaData.filter(
+     //   (media) => media.photographerId === this.photographerId
+     // );
+     // return this.storage.mediaAll(photographerMedia);
+    };
+
+    Model.prototype.readMediaById = function (mediaId, callback) {
+      // Utiliser une logique appropriée pour trouver le média par son ID
+      this.storage.readMedia(function (mediaData) {
+        const media = mediaData.find((media) => String(media.id) === String(mediaId)); // Convertir les deux valeurs en chaînes de caractères pour comparer
+        console.log("Media found by ID:", media);
+        callback(media);
+      });
+    };
   
     //pour ajouté un like
     Model.prototype.addLike = function (photoId, callback) {

@@ -1,7 +1,7 @@
 (function (window) {
     "use strict";
     
-    // Définition de la fonction constructeur Template
+    // Définition la fonction constructeur Template
     function Template() {
       // Définition du template pour l'en-tête
       this.headerTemplate = ({name, city, tagline, portrait }) => `
@@ -21,15 +21,15 @@
         `;
       
       // Définition du template pour les cartes de la galerie
-      this.photoTemplate = ({id, photographerId, image, video, title, like}) => {      
-        let mediaPhotographe = "";       
+      this.photoTemplate = ({id, photographerId, image, video, title, like }) => {
+        let mediaPhotographe = "";
         if (image) {
           mediaPhotographe = `<img class="img_photographe" src="/assets/${photographerId}/${image}" alt="${title}">`;
-        }else if(video) {
+        } else if (video) {
           mediaPhotographe = `<img class="img_photographe" src="/assets/${photographerId}/${video}" alt="${title}">`;
         };
         return `
-          <section class="images" data-media-id="${id}">
+          <section class="cards" data-media-id="${id}">
           <article>
           ${mediaPhotographe}
             <div>
@@ -43,18 +43,16 @@
     }
     
     Template.prototype.headerListe = function (data) {
-      return data.reduce((v, item) => {
-        let template = this.headerTemplate(item);
-        return template;
-      }, "");
+      return this.headerTemplate(data);
     };
 
     Template.prototype.photoListe = function (data) {
       return data.reduce((v, item) => {
         let template = this.photoTemplate(item);
-        return v +template;
+        return v + template;
       }, "");
     };
+
   
     // Template.prototype.buildLikeButton = function ({ id, countLikes }) {
       //pour incrémenté le bouton like

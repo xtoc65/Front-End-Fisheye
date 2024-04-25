@@ -1,4 +1,3 @@
-
 (async function () {
     "use strict";
     // Récupération des pièces depuis le fichier JSON

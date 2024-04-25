@@ -54,6 +54,21 @@
       });
     };
 
+     // Méthode pour récupérer tous les médias
+    Store.prototype.mediaAll = function (callback) {
+      callback = callback || function () {};// Fonction de rappel par défaut
+      // Attend que les données soient chargées avant d'appeler la fonction de rappel
+      this._dataPromise.then(() => {        
+        const entities = Memory[this._dbName].media;
+        console.log("Médias récupérés depuis le store :", entities);// Récupère les photographes depuis la mémoire
+         // Appelle la fonction de rappel avec un tableau contenant tous les photographes
+        callback.call(
+          this,
+          Object.keys(entities).map((key) => entities[key])
+        );
+      });
+    };
+
     // Méthode pour récupérer un élément par son ID
     Store.prototype.findById = function (id, callback) {
       callback = callback || function () {}; // Fonction de rappel par défaut
