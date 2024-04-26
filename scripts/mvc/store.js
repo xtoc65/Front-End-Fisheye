@@ -64,7 +64,7 @@
          // Appelle la fonction de rappel avec un tableau contenant tous les photographes
         callback.call(
           this,
-          Object.keys(entities).map((key) => entities[key])
+          Object.keys(entities)
         );
       });
     };
