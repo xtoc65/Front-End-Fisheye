@@ -66,9 +66,9 @@ $color-white: #FFFFFF;
     justify-content: space-around;
     align-items: center;
     margin-top: 1em;
-    img{
-        width: 20em;
-        height: 18em;
+    img, video{
+        width: 25em;
+        height: 25em;
         border-radius: 0.5em;
         object-fit: cover;
     }
@@ -78,7 +78,6 @@ $color-white: #FFFFFF;
         justify-content: space-between;
         flex-wrap: nowrap;
         flex-direction: row;
-        width: 19.5em;
     }
     h2{
         color: $color-red;

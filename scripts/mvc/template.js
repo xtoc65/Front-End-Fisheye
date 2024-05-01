@@ -26,7 +26,7 @@
         if (image) {
           mediaPhotographe = `<img class="img_photographe" src="/assets/${photographerId}/${image}" alt="${title}">`;
         } else if (video) {
-          mediaPhotographe = `<img class="img_photographe" src="/assets/${photographerId}/${video}" alt="${title}">`;
+          mediaPhotographe = `<video class="img_photographe" src="/assets/${photographerId}/${video}" alt="${title}"></video>`;
         };
         return `
           <section class="cards" data-media-id="${id}">

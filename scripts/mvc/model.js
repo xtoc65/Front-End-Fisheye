@@ -17,7 +17,7 @@
 
     Model.prototype.readMediaById = function (photographerId, callback) {
       const medias = this.storage.mediaAll();
-      
+      //on filtre les médias pour ne conserver que ceux dont la propriété media photographerId est égale à photographerId 
       const mediasByPhotographer = medias.filter(media => media.photographerId === photographerId);
       
       console.log("Media found by ID:", mediasByPhotographer);

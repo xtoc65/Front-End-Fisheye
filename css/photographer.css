@@ -63,9 +63,9 @@
   align-items: center;
   margin-top: 1em;
 }
-.images img {
-  width: 20em;
-  height: 18em;
+.images img, .images video {
+  width: 25em;
+  height: 25em;
   border-radius: 0.5em;
   object-fit: cover;
 }
@@ -75,7 +75,6 @@
   justify-content: space-between;
   flex-wrap: nowrap;
   flex-direction: row;
-  width: 19.5em;
 }
 .images h2 {
   color: #901C1C;
