@@ -47,7 +47,6 @@
     };
 
     Template.prototype.photoListe = function (data) {
-      console.log(data);
       return data.reduce((v, item) => {
         let template = this.photoTemplate(item);
         return v + template;

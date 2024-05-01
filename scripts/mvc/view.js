@@ -39,7 +39,6 @@
         showPhotoCard: function () {
           ///on appelle le template ou on a mis les element du dom dans lequelle on va placé les photos
           //on appelle le template headerListe ou on lui passe les parametres(les donnée qu'on a eu dans le controler)
-          console.log(params)
           self._replaceWith(self.$photographesPhotos, self.template.photoListe(params));
         },
  

@@ -50,7 +50,6 @@
     Controller.prototype.showPhotoCard = function () {
       const self = this;
       const callback = function (data) {
-        console.log(data);        
         // J'affiche les cartes de la galerie.
         self.view.render("showPhotoCard", data);
       }
