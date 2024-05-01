@@ -21,7 +21,7 @@
       `;
       
       // Définition du template pour les cartes de la galerie
-      this.photoTemplate = ({id, photographerId, image, video, title, like }) => {
+      this.photoTemplate = ({id, photographerId, image, video, title, likes }) => {
         let mediaPhotographe = "";
         if (image) {
           mediaPhotographe = `<img class="img_photographe" src="/assets/${photographerId}/${image}" alt="${title}">`;
@@ -34,7 +34,7 @@
           ${mediaPhotographe}
             <div>
               <h2>${title}</h2>
-              <p>${like} <i class="fa-solid fa-heart"></i></p>
+              <p>${likes} <i class="fa-solid fa-heart"></i></p>
             </div>
           </article>
           </section>
