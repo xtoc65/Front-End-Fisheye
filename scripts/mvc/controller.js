@@ -12,15 +12,15 @@
       // })
     }
   
-    // Initialiser le contrôleur
+    // Initialiser le contrôleu
     Controller.prototype.init = function () {
-      this.photographerId = this.photographerId(); // Obtenir l'ID du photographe à partir de l'URL
+      this.photographerId = this.getPhotographerId(); // Obtenir l'ID du photographe à partir de l'URL
       this.getPhotographerName(); // J'obtiens le nom du photographe.
       this.showAllPhotosHeader();// Afficher l'en-tête
       this.showPhotoCard(); // Afficher les cartes de la galerie
     }
 
-    Controller.prototype.photographerId = function () {
+    Controller.prototype.getPhotographerId = function () {
       const urlParams = new URLSearchParams(window.location.search);
       return Number(urlParams.get("id"));
     }
@@ -47,12 +47,33 @@
       });
     }
 
-    Controller.prototype.showPhotoCard = async function () {
+    Controller.prototype.showPhotoCard = function () {
       const self = this;
-      self.model.readMedia(function (data) {
+      const callback = function (data) {
+        console.log(data);        
         // J'affiche les cartes de la galerie.
         self.view.render("showPhotoCard", data);
-      });
+      }
+      self.model.readMediaById(this.photographerId, callback);
+      // const self = this;
+      // const photographerName = await this.getPhotographerName();
+      // const mediaData = await new Promise((resolve, reject) => {
+      //   self.model.readMedia(function (data){
+      //     resolve(data)
+      //   });
+      // });
+
+      // const galleryCards = [];
+      // for (let i = 0; i < mediaData.length; i++) {
+      //   const media = mediaData[i];
+      //   if (media.photographerId === self.photographerId) {
+      //     media.photographerName = photographerName;
+      //     const card = self.view.template.photoListe(media, media.id);
+      //     galleryCards.push(card);
+      //   }        
+      // }
+      // console.log("media data:", mediaData);
+      // self.view.render("showPhotoCard", galleryCards);
     }
   
     Controller.prototype.updateLike = function (photoId) {

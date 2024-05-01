@@ -5,20 +5,20 @@
     function Template() {
       // Définition du template pour l'en-tête
       this.headerTemplate = ({name, city, tagline, portrait }) => `
-        <section class="photographe-header">
-          <article>
-            <h1 class="name">${name}</h1>
-            <p class="ville">${city}</p>
-            <p class="description">${tagline}</p>
-          </article>
-          <article>
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-          </article>
-          <article>
-            <img class="img_photographe" src="/assets/photographers/${portrait}" alt="${name}">
-          </article>
-        </section>
-        `;
+      <section class="photographe-header">
+      <article>
+      <h1 class="name">${name}</h1>
+      <p class="ville">${city}</p>
+      <p class="description">${tagline}</p>
+      </article>
+      <article>
+      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      </article>
+      <article>
+      <img class="img_photographe" src="/assets/photographers/${portrait}" alt="${name}">
+      </article>
+      </section>
+      `;
       
       // Définition du template pour les cartes de la galerie
       this.photoTemplate = ({id, photographerId, image, video, title, like }) => {
@@ -47,6 +47,7 @@
     };
 
     Template.prototype.photoListe = function (data) {
+      console.log(data);
       return data.reduce((v, item) => {
         let template = this.photoTemplate(item);
         return v + template;

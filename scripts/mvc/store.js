@@ -20,7 +20,7 @@
             // Stocke les données en mémoire pour une utilisation ultérieure
             Memory[name] = {
               photographers: data.photographers,
-              media: data.media,
+              media: data.media
             };
           })
           //message d'erreur 
@@ -57,16 +57,12 @@
      // Méthode pour récupérer tous les médias
     Store.prototype.mediaAll = function (callback) {
       callback = callback || function () {};// Fonction de rappel par défaut
-      // Attend que les données soient chargées avant d'appeler la fonction de rappel
-      this._dataPromise.then(() => {        
-        const entities = Memory[this._dbName].media;
-        console.log("Médias récupérés depuis le store :", entities);// Récupère les photographes depuis la mémoire
+      // Attend que les données soient chargées avant d'appeler la fonction de rappel        
+        const entities = Memory[this._dbName].media; // Je récupère les médias depuis la mémoire.
+        console.log("Médias récupérés depuis le store :", entities);
+        // Récupère les photographes depuis la mémoire
          // Appelle la fonction de rappel avec un tableau contenant tous les photographes
-        callback.call(
-          this,
-          Object.keys(entities)
-        );
-      });
+        return entities;
     };
 
     // Méthode pour récupérer un élément par son ID

@@ -12,22 +12,17 @@
     };
 
     Model.prototype.readMedia = function (query) {
-      return this.storage.mediaAll(query)
+      return this.storage.mediaAll(query);
     };
 
-    Model.prototype.readMediaById = function (mediaId, callback) {
-      this.storage.mediaAll(function (photoData, mediaData) {
-        // Utiliser une logique appropriée pour trouver le média par son ID
-        const media = mediaData.find((media) => String(media.id) === String(mediaId)); // Convertir les deux valeurs en chaînes de caractères pour comparer
-        console.log("Media found by ID:", photographerMedia, media);
-        callback(media);
-        // Je filtre les médias qui appartiennent au photographe avec l'ID correspondant.
-        const photographerMedia = photoData.filter(
-          (media) => media.photographerId === this.photographerId
-          );
-          console.log(photographerMedia);
-        return photographerMedia;
-      });
+    Model.prototype.readMediaById = function (photographerId, callback) {
+      const medias = this.storage.mediaAll();
+      
+      const mediasByPhotographer = medias.filter(media => media.photographerId === photographerId);
+      
+      console.log("Media found by ID:", mediasByPhotographer);
+      
+      callback.call(null, mediasByPhotographer);
     };
   
     //pour ajouté un like
