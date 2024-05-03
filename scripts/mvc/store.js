@@ -65,6 +65,34 @@
         return entities;
     };
 
+    Store.prototype.summaryAll = function (callback) {
+      callback = callback || function () {};// Fonction de rappel par défaut
+      // Attend que les données soient chargées avant d'appeler la fonction de rappel        
+        const entities = Memory[this._dbName].media; // Je récupère les médias depuis la mémoire.
+         // Créer un objet pour stocker les totaux de likes par photographe
+      const likesByPhotographer = {};
+      
+      // Parcourir les médias pour calculer les totaux de likes par photographe
+      entities.forEach(media => {
+        const photographerId = media.photographerId;
+        const likes = media.likes;
+        
+        // Si le photographe n'a pas encore de total de likes, initialisez-le à 0
+        if (!likesByPhotographer[photographerId]) {
+          likesByPhotographer[photographerId] = 0;
+        }
+        
+        // Ajouter les likes de ce média au total de likes du photographe
+        likesByPhotographer[photographerId] += likes;
+      });
+      
+      // Afficher les totaux de likes par photographe
+      console.log("Totaux de likes par photographe :", likesByPhotographer);
+      
+      // Appeler le callback avec les totaux de likes par photographe
+      callback(likesByPhotographer);
+    };
+
     // Méthode pour récupérer un élément par son ID
     Store.prototype.findById = function (id, callback) {
       callback = callback || function () {}; // Fonction de rappel par défaut

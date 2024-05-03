@@ -40,6 +40,13 @@
           </section>
         `;
       };
+
+      this.summaryTemplate = ({id, likes, price}) => {
+        `<section class="summary" data-media-id="${id}">
+          <p>${likes} <i class="fa-solid fa-heart"></i></p>
+          <p>${price}/jour</p>
+          </section>`
+      }
     }
     
     Template.prototype.headerListe = function (data) {
@@ -51,6 +58,11 @@
         let template = this.photoTemplate(item);
         return v + template;
       }, "");
+    };
+
+    Template.prototype.summaryListe = function (data) {
+      console.log(data);
+      return this.summaryTemplate(data);
     };
 
   

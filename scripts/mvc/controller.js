@@ -18,6 +18,7 @@
       this.getPhotographerName(); // J'obtiens le nom du photographe.
       this.showAllPhotosHeader();// Afficher l'en-tête
       this.showPhotoCard(); // Afficher les cartes de la galerie
+      this.showSummary();
     }
 
     Controller.prototype.getPhotographerId = function () {
@@ -54,25 +55,15 @@
         self.view.render("showPhotoCard", data);
       }
       self.model.readMediaById(this.photographerId, callback);
-      // const self = this;
-      // const photographerName = await this.getPhotographerName();
-      // const mediaData = await new Promise((resolve, reject) => {
-      //   self.model.readMedia(function (data){
-      //     resolve(data)
-      //   });
-      // });
+    }
 
-      // const galleryCards = [];
-      // for (let i = 0; i < mediaData.length; i++) {
-      //   const media = mediaData[i];
-      //   if (media.photographerId === self.photographerId) {
-      //     media.photographerName = photographerName;
-      //     const card = self.view.template.photoListe(media, media.id);
-      //     galleryCards.push(card);
-      //   }        
-      // }
-      // console.log("media data:", mediaData);
-      // self.view.render("showPhotoCard", galleryCards);
+    Controller.prototype.showSummary = function () {
+      const self = this;
+      const callback = function (data) {
+        // J'affiche les cartes de la galerie.
+        self.view.render("showSummary", data);
+      }
+      self.model.readSummary(this.photographerId, callback);
     }
   
     Controller.prototype.updateLike = function (photoId) {

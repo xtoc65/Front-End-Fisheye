@@ -11,10 +11,6 @@
       return this.storage.photographersAll(query);
     };
 
-    Model.prototype.readMedia = function (query) {
-      return this.storage.mediaAll(query);
-    };
-
     Model.prototype.readMediaById = function (photographerId, callback) {
       const medias = this.storage.mediaAll();
       //on filtre les médias pour ne conserver que ceux dont la propriété media photographerId est égale à photographerId 
@@ -23,6 +19,21 @@
       console.log("Media found by ID:", mediasByPhotographer);
       
       callback.call(null, mediasByPhotographer);
+    };
+
+    Model.prototype.readSummary = function (photographerId, callback) {
+      const self = this;  
+      // Appeler la méthode pour calculer les likes par photographe
+      self.storage.summaryAll(function(likesByPhotographer) {
+        // Vérifier si le photographe spécifié a des likes calculés
+        const totalLikes = likesByPhotographer[photographerId] || 0;
+        
+        // Afficher le total de likes pour le photographe spécifié
+        console.log(`Total des likes par rapport a l'id du photographer ${photographerId}: ${totalLikes}`);
+        
+        // Appeler le callback avec le total de likes
+        callback(totalLikes);
+      });
     };
   
     //pour ajouté un like
