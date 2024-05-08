@@ -1,4 +1,5 @@
 (function (window) {
+    // Activation du mode strict pour un code plus sûr
     "use strict";
 
     // Fonction constructeur du contrôleur
@@ -18,11 +19,13 @@
       this.getPhotographerName(); // J'obtiens le nom du photographe.
       this.showAllPhotosHeader();// Afficher l'en-tête
       this.showPhotoCard(); // Afficher les cartes de la galerie
-      this.showSummary();
+      this.showSummary(); // Affiche le summary(likes plus prix)
     }
 
     Controller.prototype.getPhotographerId = function () {
+       // Récupère les paramètres de l'URL de la fenêtre actuelle
       const urlParams = new URLSearchParams(window.location.search);
+      // Extrait l'ID du photographe de la chaîne de requête de l'URL et le convertit en nombre
       return Number(urlParams.get("id"));
     }
 
@@ -54,13 +57,16 @@
         // J'affiche les cartes de la galerie.
         self.view.render("showPhotoCard", data);
       }
+      // Appel de la méthode readMediaById du modèle pour récupérer les médias du photographe
+      // avec l'ID du photographe actuel, en utilisant le callback défini ci-dessus
       self.model.readMediaById(this.photographerId, callback);
     }
 
     Controller.prototype.showSummary = function () {
       const self = this;
       const callback = function (data) {
-        // J'affiche les cartes de la galerie.
+        console.log(data);
+        // J'affiche les likes et le prix.
         self.view.render("showSummary", data);
       }
       self.model.readSummary(this.photographerId, callback);

@@ -1,7 +1,7 @@
 // La parenthese est pour evité que les variables interfère avec d'autre variable(évite les beug)
 (function (window) {
-  //verification plus strique entre les objets
-    "use strict";
+  // Activation du mode strict pour un code plus sûr
+  "use strict";
     
     // Déclaration des variables privées
     let Memory = {};// Mémoire pour stocker les données
@@ -23,7 +23,7 @@
               media: data.media
             };
           })
-          //message d'erreur 
+          // Gestion des erreurs lors du chargement des données 
           .catch((error) => {
             console.error("Error:", error);
           });
@@ -65,32 +65,23 @@
         return entities;
     };
 
-    Store.prototype.summaryAll = function (callback) {
+    Store.prototype.summaryAll = function (id, callback) {
       callback = callback || function () {};// Fonction de rappel par défaut
-      // Attend que les données soient chargées avant d'appeler la fonction de rappel        
-        const entities = Memory[this._dbName].media; // Je récupère les médias depuis la mémoire.
-         // Créer un objet pour stocker les totaux de likes par photographe
-      const likesByPhotographer = {};
-      
+       // Recherche le photographe correspondant à l'ID spécifié dans la base de données
+      const photographe = Memory[this._dbName].photographers.find(p => p.id === id);
+      // Je récupère les médias depuis la mémoire.
+      const entities = Memory[this._dbName].media; 
+
       // Parcourir les médias pour calculer les totaux de likes par photographe
-      entities.forEach(media => {
-        const photographerId = media.photographerId;
-        const likes = media.likes;
-        
-        // Si le photographe n'a pas encore de total de likes, initialisez-le à 0
-        if (!likesByPhotographer[photographerId]) {
-          likesByPhotographer[photographerId] = 0;
-        }
-        
-        // Ajouter les likes de ce média au total de likes du photographe
-        likesByPhotographer[photographerId] += likes;
+      let total = 0
+      Object.keys(entities).filter(key => entities[key].photographerId === id).forEach(key => {
+        console.log(key);
+        total = total + entities[key].likes;
       });
-      
       // Afficher les totaux de likes par photographe
-      console.log("Totaux de likes par photographe :", likesByPhotographer);
-      
-      // Appeler le callback avec les totaux de likes par photographe
-      callback(likesByPhotographer);
+      console.log("Total de likes par photographe :", total);
+      // Appeler le callback avec les totaux de likes par photographe, y compris les données du photographe lui-même
+      callback({...photographe, likes: total});
     };
 
     // Méthode pour récupérer un élément par son ID

@@ -1,4 +1,5 @@
 (function (window) {
+    // Activation du mode strict pour un code plus sûr
     "use strict";
   
      // Définition de la fonction constructeur View
@@ -45,8 +46,7 @@
         },
 
         showSummary: function () {
-          ///on appelle le template ou on a mis les element du dom dans lequelle on va placé les photos
-          //on appelle le template headerListe ou on lui passe les parametres(les donnée qu'on a eu dans le controler)
+          // Remplace le contenu actuel de l'élément $summary par le contenu généré à partir du template summaryListe
           self._replaceWith(self.$summary, self.template.summaryListe(params));
         }
  

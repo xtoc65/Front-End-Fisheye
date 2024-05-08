@@ -1,4 +1,5 @@
 (function (window) {
+    // Activation du mode strict pour un code plus sûr
     "use strict";
     
     // Définition du constructeur du modèle
@@ -24,15 +25,9 @@
     Model.prototype.readSummary = function (photographerId, callback) {
       const self = this;  
       // Appeler la méthode pour calculer les likes par photographe
-      self.storage.summaryAll(function(likesByPhotographer) {
-        // Vérifier si le photographe spécifié a des likes calculés
-        const totalLikes = likesByPhotographer[photographerId] || 0;
-        
-        // Afficher le total de likes pour le photographe spécifié
-        console.log(`Total des likes par rapport a l'id du photographer ${photographerId}: ${totalLikes}`);
-        
+      self.storage.summaryAll(photographerId, function(summary) {
         // Appeler le callback avec le total de likes
-        callback(totalLikes);
+        callback(summary);
       });
     };
   

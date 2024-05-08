@@ -1,4 +1,5 @@
 (function (window) {
+    // Activation du mode strict pour un code plus sûr
     "use strict";
     
     // Définition la fonction constructeur Template
@@ -42,10 +43,10 @@
       };
 
       this.summaryTemplate = ({id, likes, price}) => {
-        `<section class="summary" data-media-id="${id}">
+        return `<section class="summary" data-media-id="${id}">
           <p>${likes} <i class="fa-solid fa-heart"></i></p>
           <p>${price}/jour</p>
-          </section>`
+          </section>`;
       }
     }
     
