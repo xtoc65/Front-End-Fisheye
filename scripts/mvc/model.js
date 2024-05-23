@@ -35,14 +35,15 @@
     Model.prototype.addLike = function (photoId, callback) {
       const self = this;
       this.storage.findById(photoId, function (item) {
+        console.log(item);
         self.storage.save(
           photoId,
-          { ...item, countLikes: item.countLikes + 1 },
+          // { ...item, likes: item.likes + 1 },
           callback
-        );
-      });
-    };
-    
+          );
+        });
+      };
+      
     // Définition de l'objet global "app" s'il n'existe pas déjà
     window.app = window.app || {};
     // Assignation du constructeur du modèle à l'objet global "app"

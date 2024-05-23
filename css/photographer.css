@@ -85,11 +85,12 @@
   line-height: normal;
   margin: 0.5em 0;
 }
-.images p {
+.images a {
   color: #901C1C;
   font-size: 1.2em;
   font-weight: bold;
   margin: 0.5em 0;
+  text-decoration: none;
 }
 .images i {
   color: #901C1C;

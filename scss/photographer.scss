@@ -88,11 +88,12 @@ $color-white: #FFFFFF;
         line-height: normal;
         margin:0.5em 0;
     }
-    p{
+    a{
         color: $color-red;
         font-size: 1.2em;
         font-weight: bold;
         margin: 0.5em 0;
+        text-decoration: none;
     }
     i{
         color: $color-red;

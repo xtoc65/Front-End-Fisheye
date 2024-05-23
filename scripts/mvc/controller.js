@@ -8,9 +8,9 @@
       self.model = model; // Assigner le modèle au contrôleur
       self.view = view;// Assigner la vue au contrôleur
   
-      // self.view.bind("photoLiked", function (photoId) {
-      //   self.updateLike(photoId);
-      // })
+      self.view.bind("photoLiked", function (photoId) {
+        self.updateLike(photoId);
+      })
     }
   
     // Initialiser le contrôleu
@@ -20,6 +20,8 @@
       this.showAllPhotosHeader();// Afficher l'en-tête
       this.showPhotoCard(); // Afficher les cartes de la galerie
       this.showSummary(); // Affiche le summary(likes plus prix)
+      this.showDiapo();// Afficher la modale des diapo
+      this.updateLike();// ajout des likes
     }
 
     Controller.prototype.getPhotographerId = function () {
@@ -65,17 +67,25 @@
     Controller.prototype.showSummary = function () {
       const self = this;
       const callback = function (data) {
-        console.log(data);
         // J'affiche les likes et le prix.
         self.view.render("showSummary", data);
       }
       self.model.readSummary(this.photographerId, callback);
     }
+
+    Controller.prototype.showDiapo = function () {
+      const self = this;
+      const func = function(data) {
+        // Afficher l'en-tête en utilisant les données du photographe
+       self.view.render("showDiapo" , data.filter((photographer) => photographer.id === self.photographerId));
+     }
+      self.model.readMediaById(this.photographerId, func);
+    }
   
     Controller.prototype.updateLike = function (photoId) {
       const self = this;
-      self.model.addLike(photoId, function ({id, countLikes}) {
-        self.view.render("updateLikes", { id, countLikes })
+      self.model.addLike(photoId, function ({id, likes}) {
+        self.view.render("updateLikes", { id, likes })
       });
     }
   

@@ -73,10 +73,12 @@
       const entities = Memory[this._dbName].media; 
 
       // Parcourir les médias pour calculer les totaux de likes par photographe
+      // Initialisation de la variable total pour stocker le nombre total de likes
       let total = 0
+      // Parcours de toutes les clés de l'objet entities et on filtre les médias pour ceux appartenant au photographe avec l'ID spécifié
       Object.keys(entities).filter(key => entities[key].photographerId === id).forEach(key => {
-        console.log(key);
-        total = total + entities[key].likes;
+        // Pour chaque clé (représentant un média du photographe), ajoute les likes de ce média au total
+        total = total + entities[key].likes; // Ajoute le nombre de likes de ce média au total
       });
       // Afficher les totaux de likes par photographe
       console.log("Total de likes par photographe :", total);
@@ -87,7 +89,13 @@
     // Méthode pour récupérer un élément par son ID
     Store.prototype.findById = function (id, callback) {
       callback = callback || function () {}; // Fonction de rappel par défaut
-      callback.call(this, Memory[this._dbName].photographers[id]);
+      // const photographers = Memory[this._dbName].photographers;
+      // const photographer = photographers.find(p => p.id === id);
+      console.log('Memory:', Memory);
+      console.log('Database:', this._dbName);
+      console.log('Photographers:', Memory[this._dbName].photographers);
+      console.log(Memory[this._dbName].photographers.find(p => p.id === id)); 
+      callback.call(this, Memory[this._dbName].photographer);//TODO utilisé la methode find
     };
   
     // Méthode pour sauvegarder un élément
@@ -99,10 +107,11 @@
         callback(item);// Appelle la fonction de rappel avec l'élément mis à jour
         return;
       }
-  
+      
       // Si l'ID n'est pas fourni, crée, ajoute un nouvel élément avec un nouvel ID
       Memory[this._dbName].photographers[ID++] = params;
-      callback(params);// Appelle la fonction de rappel avec le nouvel élément
+      // console.log(params);
+      // callback(params);// Appelle la fonction de rappel avec le nouvel élément
     };
   
     // Expose la classe Store en tant que propriété de l'objet global "app"

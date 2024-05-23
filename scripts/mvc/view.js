@@ -11,19 +11,22 @@
       this.$photographesPhotos = qs(".images");
 
       this.$summary = qs(".summary");
+
+      this.$diapo = qs(".slider-container")
     }
   
-    // View.prototype.bind = function (event, handler) {
-    //   const self = this;
-    //   if (event === "photoLiked") {
-    //     $delegate(self.$photographesListe, ".card__btn", "click", function (event) {
-    //       event.preventDefault();
-  
-    //       const id = parseInt(event.target.getAttribute("data-like-id"));
-    //       handler(id);
-    //     });
-    //   }
-    // };
+    View.prototype.bind = function (event, handler) {
+      const self = this;
+      if (event === "photoLiked") {
+        $delegate(self.$photographesListe, ".card__btn", "click", function (event) {
+          event.preventDefault();
+          console.log("Like button clicked");
+
+          const id = parseInt(event.target.getAttribute("data-like-id"));
+          handler(id);
+        });
+      }
+    };
   
     /**
      *
@@ -48,14 +51,20 @@
         showSummary: function () {
           // Remplace le contenu actuel de l'élément $summary par le contenu généré à partir du template summaryListe
           self._replaceWith(self.$summary, self.template.summaryListe(params));
-        }
+        },
+
+        showDiapo: function () {
+          // Remplace le contenu actuel de l'élément $diapo par le contenu généré à partir du template summaryListe
+          console.log("diapoListe param" ,params);
+          self._replaceWith(self.$diapo, self.template.diapoListe(params));
+        },
  
-        // updateLikes: function () {
-        //   self._replaceWith(
-        //     qs(`.img_photographe-${params.portrait}`),
-        //     self.template.headerListe(params)
-        //   );
-        // },
+        updateLikes: function () {
+          self._replaceWith(
+            qs(`.card__btn-${params.portrait}`),
+            self.template.buildLikeButton(params)
+          );
+        },
       };
   
       viewCmdList[viewCmd].call();
